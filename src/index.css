@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================
+   🌸 ROOT THEME
+========================= */
+@layer base {
+  :root {
+    --background: 30 100% 98%;
+    --foreground: 20 30% 15%;
+
+    --primary: 10 100% 75%;
+    --secondary: 350 100% 88%;
+
+    --border: 30 30% 88%;
+
+    --radius: 1rem;
+
+    /* 💖 Premium Gradients */
+    --gradient-primary: linear-gradient(
+      135deg,
+      hsl(350, 100%, 90%),
+      hsl(10, 100%, 78%),
+      hsl(30, 100%, 88%)
+    );
+
+    /* 🌅 Soft dreamy background */
+    --gradient-hero:
+      radial-gradient(circle at 20% 20%, hsl(350, 100%, 92%), transparent 40%),
+      radial-gradient(circle at 80% 30%, hsl(10, 100%, 85%), transparent 40%),
+      radial-gradient(circle at 50% 80%, hsl(30, 100%, 90%), transparent 40%);
+
+    /* 💬 Chat gradient */
+    --gradient-chat-user: linear-gradient(
+      135deg,
+      hsl(350, 100%, 85%),
+      hsl(10, 100%, 75%)
+    );
+
+    /* ✨ Glass */
+    --glass-bg: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(255, 200, 180, 0.3);
+
+    /* ✨ Glow */
+    --shadow-soft: 0 8px 32px rgba(255, 140, 120, 0.1);
+    --shadow-glow: 0 0 60px rgba(255, 120, 140, 0.25);
+  }
+
+  /* 🌙 Dark Mode */
+  .dark {
+    --background: 20 20% 8%;
+    --foreground: 30 100% 95%;
+
+    --glass-bg: rgba(40, 40, 40, 0.5);
+    --glass-border: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* =========================
+   🧠 BASE STYLES
+========================= */
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground;
+    font-family: 'DM Sans', sans-serif;
+    background: var(--gradient-hero);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* =========================
+   ✨ COMPONENTS
+========================= */
+@layer components {
+
+  /* 🌸 Glass Card */
+  .glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+    border-radius: var(--radius);
+  }
+
+  /* 🌈 Gradient Buttons */
+  .gradient-primary {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: var(--shadow-glow);
+  }
+
+  .gradient-primary:hover {
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+  }
+
+  /* ✨ Gradient Text */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 💬 Chat Bubbles */
+  .chat-bubble-user {
+    background: var(--gradient-chat-user);
+    color: white;
+    box-shadow: 0 8px 20px rgba(255, 120, 140, 0.3);
+  }
+
+  .chat-bubble-ai {
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+  }
+
+  /* 🌊 Animated Background */
+  .animated-bg {
+    background: linear-gradient(
+      -45deg,
+      #ffd6e0,
+      #ffc2b8,
+      #ffe5c4,
+      #ffd6e0
+    );
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+  }
+
+  /* ✨ Glow effect */
+  .glow-effect {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* 💖 Floating Shapes */
+  .floating-shape {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.2;
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .floating-pink {
+    width: 300px;
+    height: 300px;
+    background: #ff9abf;
+    top: 10%;
+    left: 10%;
+  }
+
+  .floating-orange {
+    width: 300px;
+    height: 300px;
+    background: #ffb27d;
+    bottom: 10%;
+    right: 10%;
+  }
+}
+
+/* =========================
+   🌊 ANIMATIONS
+========================= */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ✨ Fade In */
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+.robot-float {
+  animation: float 3s ease-in-out infinite;
+}
